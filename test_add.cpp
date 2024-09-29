@@ -1,6 +1,9 @@
-#include <gtest/gtest.h>
+///\file
 
+#include <gtest/gtest.h>
 #include "my_add.hpp"
+
+///Unit test
 
 TEST(Add, Simple){
    EXPECT_EQ(my_add(2,3),5);

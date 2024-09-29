@@ -2,23 +2,28 @@ cmake_minimum_required(VERSION 3.11)
 project(Cpp_project)
 add_executable(main main.cpp my_add.cpp)
 
-
 include(FetchContent)
+
+FetchContent_Declare(googlebenchmark
+        GIT_REPOSITORY https://github.com/google/benchmark.git
+        GIT_TAG main) # need main for benchmark::benchmark
+
+
 FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
     GIT_TAG v1.15.2
     )
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(googletest googlebenchmark)
 
-find_package(GTest)
+#find_package(GTest)
 
-enable_testing()
+#enable_testing()
 
 add_executable(tests test_add.cpp my_add.cpp )
 
 target_link_libraries(tests gtest_main)
 
-include(GoogleTest)
+#include(GoogleTest)
 
-gtest_discover_tests(tests)
+#gtest_discover_tests(tests)
